@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Apresentação sobre Redes Neurais Artificiais dividida em quatro partes.">
+<title>Redes Neurais Artificiais</title>
+<style>
+:root{
+  --bg:#0b1020;
+  --panel:#121a2f;
+  --panel2:#18223c;
+  --text:#edf2ff;
+  --muted:#aeb9d4;
+  --accent:#7c9cff;
+  --accent2:#74e0c0;
+  --line:#2a3657;
+  --shadow:0 18px 50px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(124,156,255,.15), transparent 28rem),
+    radial-gradient(circle at 85% 20%, rgba(116,224,192,.09), transparent 28rem),
+    var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
+main{max-width:980px;margin:0 auto;padding:34px 18px 80px}
+.hero{
+  padding:32px 26px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(24,34,60,.96),rgba(18,26,47,.92));
+  box-shadow:var(--shadow);
+}
+.kicker{
+  margin:0 0 8px;
+  color:var(--accent2);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:800;
+  font-size:.8rem;
+}
+h1{font-size:clamp(2.25rem,7vw,4rem);line-height:1.05;margin:.1em 0 .35em}
+.subtitle{color:var(--muted);font-size:1.08rem;max-width:760px;margin:0}
+h2{margin:0 0 10px;font-size:1.55rem}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:15px;
+  margin-top:24px;
+}
+.card{
+  text-decoration:none;
+  color:inherit;
+  padding:20px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:var(--panel);
+  box-shadow:0 10px 30px rgba(0,0,0,.16);
+  transition:.15s ease;
+}
+.card:hover{
+  border-color:var(--accent);
+  transform:translateY(-3px);
+}
+.number{
+  display:inline-flex;
+  width:34px;height:34px;
+  align-items:center;justify-content:center;
+  border-radius:10px;
+  background:var(--panel2);
+  color:var(--accent2);
+  font-weight:900;
+  margin-bottom:12px;
+}
+.card strong{display:block;font-size:1.12rem;margin-bottom:6px}
+.card span{color:var(--muted)}
+.info{
+  margin-top:22px;
+  padding:20px;
+  border-radius:18px;
+  border:1px solid var(--line);
+  background:rgba(18,26,47,.8);
+}
+.info p{margin:8px 0;color:#e1e8fb}
+.site-nav{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px}
+.site-nav a{
+  text-decoration:none;color:var(--text);
+  border:1px solid var(--line);background:var(--panel);
+  padding:10px 13px;border-radius:12px;font-weight:700;
+}
+.site-nav a:hover{border-color:var(--accent)}
+footer{color:var(--muted);text-align:center;margin-top:24px;font-size:.9rem}
+footer a{color:inherit}
+@media(max-width:600px){
+  main{padding:18px 12px 55px}
+  .hero{padding:23px 20px}
+}
+</style>
+</head>
+<body>
+<main>
+  <nav class="site-nav" aria-label="Navegação">
+    <a href="index.html">⌂ Início</a>
+  </nav>
+
+  <header class="hero">
+    <p class="kicker">Apresentação</p>
+    <h1>Redes Neurais Artificiais</h1>
+    <p class="subtitle">Uma apresentação em 4 partes sobre como redes neurais são estruturadas, como aprendem e como podem reconhecer padrões.</p>
+  </header>
+
+  <section>
+    <h2>Comece por aqui</h2>
+    <div class="grid">
+    <a class="card" href="01_introducao_e_estrutura.html">
+      <span class="number">1</span>
+      <strong>Introdução e Estrutura</strong>
+      <span>Inspiração, camadas e o funcionamento de um neurônio artificial.</span>
+    </a>
+    <a class="card" href="02_como_a_rede_aprende.html">
+      <span class="number">2</span>
+      <strong>Como a Rede Aprende</strong>
+      <span>Forward Pass, Loss, Backpropagation e Gradiente Descendente.</span>
+    </a>
+    <a class="card" href="03_exemplo_gato_ou_cachorro.html">
+      <span class="number">3</span>
+      <strong>Exemplo: Gato ou Cachorro?</strong>
+      <span>Como pixels e características podem ser usados na classificação.</span>
+    </a>
+    <a class="card" href="04_saida_erro_aplicacoes.html">
+      <span class="number">4</span>
+      <strong>Saída, Erro e Aplicações</strong>
+      <span>Palpite, erro, correção, tipos de redes e conclusão.</span>
+    </a>
+    </div>
+  </section>
+
+  <section class="info">
+    <h2>Como navegar</h2>
+    <p>Use os cartões acima para abrir cada parte. Dentro de cada página, os botões permitem voltar ao início, retornar à parte anterior ou avançar para a próxima.</p>
+  </section>
+
+  <footer>Redes Neurais Artificiais • página inicial para GitHub Pages</footer>
+</main>
+</body>
+</html>

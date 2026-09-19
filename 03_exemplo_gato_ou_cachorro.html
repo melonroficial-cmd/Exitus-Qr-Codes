@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redes Neurais Artificiais — Exemplo Gato ou Cachorro</title>
+<style>
+:root{
+  --bg:#0b1020;
+  --panel:#121a2f;
+  --panel2:#18223c;
+  --text:#edf2ff;
+  --muted:#aeb9d4;
+  --accent:#7c9cff;
+  --accent2:#74e0c0;
+  --line:#2a3657;
+  --shadow:0 18px 50px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(124,156,255,.15), transparent 28rem),
+    radial-gradient(circle at 85% 20%, rgba(116,224,192,.09), transparent 28rem),
+    var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
+main{max-width:980px;margin:0 auto;padding:34px 18px 80px}
+.hero{
+  padding:26px 24px 30px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(24,34,60,.94),rgba(18,26,47,.92));
+  box-shadow:var(--shadow);
+}
+.kicker{
+  margin:0 0 8px;
+  color:var(--accent2);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:800;
+  font-size:.8rem;
+}
+h1{font-size:clamp(2rem,6vw,3.65rem);line-height:1.05;margin:.1em 0 .35em}
+.subtitle{color:var(--muted);font-size:1.06rem;margin:0;max-width:760px}
+.progress{
+  display:flex;
+  gap:8px;
+  margin-top:20px;
+}
+.progress span{
+  height:7px;
+  flex:1;
+  border-radius:999px;
+  background:var(--line);
+}
+.progress span.active{background:var(--accent)}
+section{
+  margin-top:24px;
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:rgba(18,26,47,.8);
+}
+h2{margin:0 0 12px;font-size:1.55rem}
+p{margin:10px 0;color:#e7ecfb}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:15px}
+.card{
+  padding:17px;
+  border-radius:16px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+}
+.card strong{display:block;color:#fff;margin-bottom:6px}
+.card span{color:var(--muted)}
+.quote{
+  margin-top:20px;
+  border-left:4px solid var(--accent);
+  padding:12px 16px;
+  background:rgba(124,156,255,.08);
+  border-radius:0 12px 12px 0;
+  color:#dfe7ff;
+}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:24px;
+}
+.nav a{
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:12px 15px;
+  border-radius:13px;
+  font-weight:700;
+}
+.nav a:hover{border-color:var(--accent)}
+footer{color:var(--muted);text-align:center;margin-top:22px;font-size:.9rem}
+@media(max-width:600px){
+  main{padding:18px 12px 55px}
+  .hero,section{padding:20px}
+  .nav{flex-direction:column}
+  .nav a{text-align:center}
+}
+
+.site-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:0 0 22px;
+}
+.site-nav a{
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:10px 13px;
+  border-radius:12px;
+  font-weight:700;
+  transition:.15s ease;
+}
+.site-nav a:hover{
+  border-color:var(--accent);
+  transform:translateY(-1px);
+}
+.site-nav a.home{
+  background:var(--panel2);
+}
+
+</style>
+</head>
+<body>
+<main>
+  <nav class="site-nav" aria-label="Navegação"><a class="home" href="index.html">⌂ Início</a><a href="02_como_a_rede_aprende.html">← Anterior</a><a href="04_saida_erro_aplicacoes.html">Próxima →</a></nav>
+  <header class="hero">
+    <p class="kicker">Parte 3 • Exemplo prático</p>
+    <h1>Gato ou cachorro?</h1>
+    <p class="subtitle">Um exemplo visual para transformar a matemática abstrata em algo intuitivo.</p>
+    <div class="progress" aria-label="Progresso da apresentação"><span class=""></span><span class=""></span><span class="active"></span><span class=""></span></div>
+  </header>
+
+  <section><h2>O problema prático</h2>
+<p>Imagine que queremos treinar uma rede neural para olhar uma foto e dizer se ela mostra um gato ou um cachorro.</p>
+<p>Como o computador faz isso se ele não enxerga como nós?</p>
+</section>
+<section><h2>Entrada: fatiando a imagem</h2>
+<p>O primeiro passo acontece na Camada de Entrada. O computador não vê formas; ele vê números.</p>
+<p>Pegamos a foto e a transformamos em pequenos quadradinhos chamados pixels. Cada pixel possui um valor numérico que representa a sua cor.</p>
+<p>Se a imagem tiver 1.000 pixels, o roteiro considera uma rede com 1.000 neurônios na entrada, cada um segurando o valor de um pixel.</p>
+</section>
+<section><h2>Camadas ocultas: procurando pistas</h2>
+<p>Os números entram nas Camadas Ocultas. O cérebro artificial começa a trabalhar por níveis de complexidade:</p>
+<div class="grid">
+<div class="card"><strong>Primeiras camadas</strong><span>Procuram coisas simples, como linhas verticais, horizontais e curvas básicas.</span></div>
+<div class="card"><strong>Camadas do meio</strong><span>Juntam linhas para identificar formas mais complexas, como círculos (olhos) ou triângulos (orelhas).</span></div>
+<div class="card"><strong>Últimas camadas ocultas</strong><span>Combinam as características e reconhecem estruturas inteiras, como focinhos, bigodes ou o formato das patas.</span></div>
+</div>
+</section>
+<section><h2>Pesos das características</h2>
+<p>Cada neurônio atribui um peso diferente às características. No exemplo do roteiro, encontrar uma orelha pontuda pode receber um peso positivo muito grande para a classificação “gato”.</p>
+</section>
+<footer>Redes Neurais Artificiais • <a href="index.html" style="color:inherit">voltar ao início</a></footer>
+</main>
+</body>
+</html>

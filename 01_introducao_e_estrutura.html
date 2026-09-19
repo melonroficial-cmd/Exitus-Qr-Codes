@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redes Neurais Artificiais — Introdução e Estrutura</title>
+<style>
+:root{
+  --bg:#0b1020;
+  --panel:#121a2f;
+  --panel2:#18223c;
+  --text:#edf2ff;
+  --muted:#aeb9d4;
+  --accent:#7c9cff;
+  --accent2:#74e0c0;
+  --line:#2a3657;
+  --shadow:0 18px 50px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(124,156,255,.15), transparent 28rem),
+    radial-gradient(circle at 85% 20%, rgba(116,224,192,.09), transparent 28rem),
+    var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
+main{max-width:980px;margin:0 auto;padding:34px 18px 80px}
+.hero{
+  padding:26px 24px 30px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(24,34,60,.94),rgba(18,26,47,.92));
+  box-shadow:var(--shadow);
+}
+.kicker{
+  margin:0 0 8px;
+  color:var(--accent2);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:800;
+  font-size:.8rem;
+}
+h1{font-size:clamp(2rem,6vw,3.65rem);line-height:1.05;margin:.1em 0 .35em}
+.subtitle{color:var(--muted);font-size:1.06rem;margin:0;max-width:760px}
+.progress{
+  display:flex;
+  gap:8px;
+  margin-top:20px;
+}
+.progress span{
+  height:7px;
+  flex:1;
+  border-radius:999px;
+  background:var(--line);
+}
+.progress span.active{background:var(--accent)}
+section{
+  margin-top:24px;
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:rgba(18,26,47,.8);
+}
+h2{margin:0 0 12px;font-size:1.55rem}
+p{margin:10px 0;color:#e7ecfb}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:15px}
+.card{
+  padding:17px;
+  border-radius:16px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+}
+.card strong{display:block;color:#fff;margin-bottom:6px}
+.card span{color:var(--muted)}
+.quote{
+  margin-top:20px;
+  border-left:4px solid var(--accent);
+  padding:12px 16px;
+  background:rgba(124,156,255,.08);
+  border-radius:0 12px 12px 0;
+  color:#dfe7ff;
+}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:24px;
+}
+.nav a{
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:12px 15px;
+  border-radius:13px;
+  font-weight:700;
+}
+.nav a:hover{border-color:var(--accent)}
+footer{color:var(--muted);text-align:center;margin-top:22px;font-size:.9rem}
+@media(max-width:600px){
+  main{padding:18px 12px 55px}
+  .hero,section{padding:20px}
+  .nav{flex-direction:column}
+  .nav a{text-align:center}
+}
+
+.site-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:0 0 22px;
+}
+.site-nav a{
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:10px 13px;
+  border-radius:12px;
+  font-weight:700;
+  transition:.15s ease;
+}
+.site-nav a:hover{
+  border-color:var(--accent);
+  transform:translateY(-1px);
+}
+.site-nav a.home{
+  background:var(--panel2);
+}
+
+</style>
+</head>
+<body>
+<main>
+  <nav class="site-nav" aria-label="Navegação"><a class="home" href="index.html">⌂ Início</a><a href="02_como_a_rede_aprende.html">Próxima →</a></nav>
+  <header class="hero">
+    <p class="kicker">Parte 1 • Introdução</p>
+    <h1>Como são feitas as Redes Neurais Artificiais</h1>
+    <p class="subtitle">Da inspiração no cérebro às camadas que organizam uma rede neural.</p>
+    <div class="progress" aria-label="Progresso da apresentação"><span class="active"></span><span class=""></span><span class=""></span><span class=""></span></div>
+  </header>
+
+  <section><h2>Introdução e Inspiração</h2>
+<p>Boa parte das grandes inovações de Inteligência Artificial que vemos hoje — como reconhecimento facial, carros autônomos e o ChatGPT — funcionam graças às Redes Neurais Artificiais.</p>
+<p>Como o próprio nome diz, elas são modelos computacionais matemáticos inspirados na estrutura do nosso cérebro, criadas para fazer com que os computadores aprendam a reconhecer padrões da mesma forma que nós humanos fazemos.</p>
+</section>
+<section><h2>A Estrutura da Rede</h2>
+<p>Uma rede neural não é um bloco único; ela é organizada em três tipos de camadas:</p>
+<div class="grid">
+<div class="card"><strong>Camada de Entrada</strong><span>É por onde a máquina recebe os dados brutos, como os pixels de uma foto ou um histórico de vendas.</span></div>
+<div class="card"><strong>Camadas Ocultas</strong><span>Ficam no meio. É aqui que as informações são processadas, características são extraídas e o problema matemático é resolvido.</span></div>
+<div class="card"><strong>Camada de Saída</strong><span>Entrega a resposta final, por exemplo: “esta foto é de um cachorro” ou “o preço desta ação vai subir”.</span></div>
+</div>
+</section>
+<section><h2>O Neurônio Artificial</h2>
+<p>Se dermos um zoom dentro dessas camadas, encontramos milhares de neurônios artificiais. Cada um deles realiza um cálculo simples em quatro passos:</p>
+<div class="grid">
+<div class="card"><strong>1. Entrada</strong><span>Recebe as informações de entrada.</span></div>
+<div class="card"><strong>2. Peso</strong><span>Aplica um peso a cada entrada, funcionando como um nível de importância.</span></div>
+<div class="card"><strong>3. Soma + Bias</strong><span>Soma os valores e adiciona um ajuste chamado Bias (ou viés).</span></div>
+<div class="card"><strong>4. Função de Ativação</strong><span>Decide se aquele neurônio deve “disparar” a informação para a próxima camada ou não, trazendo flexibilidade matemática ao modelo.</span></div>
+</div>
+</section>
+<footer>Redes Neurais Artificiais • <a href="index.html" style="color:inherit">voltar ao início</a></footer>
+</main>
+</body>
+</html>

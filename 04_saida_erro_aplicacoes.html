@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redes Neurais Artificiais — Saída, Erro e Aplicações</title>
+<style>
+:root{
+  --bg:#0b1020;
+  --panel:#121a2f;
+  --panel2:#18223c;
+  --text:#edf2ff;
+  --muted:#aeb9d4;
+  --accent:#7c9cff;
+  --accent2:#74e0c0;
+  --line:#2a3657;
+  --shadow:0 18px 50px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(124,156,255,.15), transparent 28rem),
+    radial-gradient(circle at 85% 20%, rgba(116,224,192,.09), transparent 28rem),
+    var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
+main{max-width:980px;margin:0 auto;padding:34px 18px 80px}
+.hero{
+  padding:26px 24px 30px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(24,34,60,.94),rgba(18,26,47,.92));
+  box-shadow:var(--shadow);
+}
+.kicker{
+  margin:0 0 8px;
+  color:var(--accent2);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:800;
+  font-size:.8rem;
+}
+h1{font-size:clamp(2rem,6vw,3.65rem);line-height:1.05;margin:.1em 0 .35em}
+.subtitle{color:var(--muted);font-size:1.06rem;margin:0;max-width:760px}
+.progress{
+  display:flex;
+  gap:8px;
+  margin-top:20px;
+}
+.progress span{
+  height:7px;
+  flex:1;
+  border-radius:999px;
+  background:var(--line);
+}
+.progress span.active{background:var(--accent)}
+section{
+  margin-top:24px;
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:rgba(18,26,47,.8);
+}
+h2{margin:0 0 12px;font-size:1.55rem}
+p{margin:10px 0;color:#e7ecfb}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:15px}
+.card{
+  padding:17px;
+  border-radius:16px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+}
+.card strong{display:block;color:#fff;margin-bottom:6px}
+.card span{color:var(--muted)}
+.quote{
+  margin-top:20px;
+  border-left:4px solid var(--accent);
+  padding:12px 16px;
+  background:rgba(124,156,255,.08);
+  border-radius:0 12px 12px 0;
+  color:#dfe7ff;
+}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:24px;
+}
+.nav a{
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:12px 15px;
+  border-radius:13px;
+  font-weight:700;
+}
+.nav a:hover{border-color:var(--accent)}
+footer{color:var(--muted);text-align:center;margin-top:22px;font-size:.9rem}
+@media(max-width:600px){
+  main{padding:18px 12px 55px}
+  .hero,section{padding:20px}
+  .nav{flex-direction:column}
+  .nav a{text-align:center}
+}
+
+.site-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:0 0 22px;
+}
+.site-nav a{
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:10px 13px;
+  border-radius:12px;
+  font-weight:700;
+  transition:.15s ease;
+}
+.site-nav a:hover{
+  border-color:var(--accent);
+  transform:translateY(-1px);
+}
+.site-nav a.home{
+  background:var(--panel2);
+}
+
+</style>
+</head>
+<body>
+<main>
+  <nav class="site-nav" aria-label="Navegação"><a class="home" href="index.html">⌂ Início</a><a href="03_exemplo_gato_ou_cachorro.html">← Anterior</a></nav>
+  <header class="hero">
+    <p class="kicker">Parte 4 • Resultado</p>
+    <h1>Da resposta ao aprendizado</h1>
+    <p class="subtitle">O palpite inicial, o erro, a correção e onde diferentes redes são usadas.</p>
+    <div class="progress" aria-label="Progresso da apresentação"><span class=""></span><span class=""></span><span class=""></span><span class="active"></span></div>
+  </header>
+
+  <section><h2>A saída e o erro</h2>
+<p>A Camada de Saída tem dois neurônios: um para “Gato” e outro para “Cachorro”.</p>
+<p>No primeiro teste, com a rede ainda destreinada, ela pode olhar os pixels e chutar: 80% de chance de ser cachorro e 20% de gato.</p>
+<p>Como sabemos que a foto é de um gato, a Função de Perda mede o erro do palpite.</p>
+</section>
+<section><h2>Corrigindo os erros</h2>
+<p>Para corrigir o resultado, a rede faz a Retropropagação. Ela viaja de volta, da saída para a entrada, atualizando os pesos que contribuíram para o erro.</p>
+<p>No exemplo do roteiro, uma pista incorreta recebe menos influência, enquanto uma pista útil, como a identificação de um bigode, pode receber mais peso.</p>
+</section>
+<section><h2>Treinamento</h2>
+<p>Depois de repetir esse processo com milhares de fotos de gatos e cachorros diferentes, a rede ajusta seus pesos. Na próxima vez que encontrar um gato, ela poderá ignorar pistas falsas e produzir um resultado mais preciso.</p>
+</section>
+<section><h2>Tipos de redes e aplicações</h2>
+<p>Dependendo do problema, usamos tipos diferentes de redes.</p>
+<div class="grid">
+<div class="card"><strong>Imagens — CNNs</strong><span>As Redes Convolucionais são usadas para problemas que envolvem imagens.</span></div>
+<div class="card"><strong>Texto e sequências — Transformers ou RNNs</strong><span>Transformers e Redes Recorrentes podem ser usados quando o problema envolve texto ou sequências.</span></div>
+</div>
+</section>
+<section><h2>Conclusão</h2>
+<p>Em resumo, criar uma rede neural é criar um sistema que aprende por tentativa, erro e correção matemática, permitindo que computadores tomem decisões complexas sozinhos.</p>
+</section>
+<section><h2>Dica visual para a apresentação</h2>
+<p>Evite slides cheios de texto. Use diagramas de redes neurais — bolinhas conectadas por linhas — e deixe o texto mais detalhado como guia para a sua fala.</p>
+</section>
+<footer>Redes Neurais Artificiais • <a href="index.html" style="color:inherit">voltar ao início</a></footer>
+</main>
+</body>
+</html>

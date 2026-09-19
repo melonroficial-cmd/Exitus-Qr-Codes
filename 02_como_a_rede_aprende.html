@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redes Neurais Artificiais — Como a Rede Aprende</title>
+<style>
+:root{
+  --bg:#0b1020;
+  --panel:#121a2f;
+  --panel2:#18223c;
+  --text:#edf2ff;
+  --muted:#aeb9d4;
+  --accent:#7c9cff;
+  --accent2:#74e0c0;
+  --line:#2a3657;
+  --shadow:0 18px 50px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(124,156,255,.15), transparent 28rem),
+    radial-gradient(circle at 85% 20%, rgba(116,224,192,.09), transparent 28rem),
+    var(--bg);
+  color:var(--text);
+  line-height:1.65;
+}
+main{max-width:980px;margin:0 auto;padding:34px 18px 80px}
+.hero{
+  padding:26px 24px 30px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(24,34,60,.94),rgba(18,26,47,.92));
+  box-shadow:var(--shadow);
+}
+.kicker{
+  margin:0 0 8px;
+  color:var(--accent2);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:800;
+  font-size:.8rem;
+}
+h1{font-size:clamp(2rem,6vw,3.65rem);line-height:1.05;margin:.1em 0 .35em}
+.subtitle{color:var(--muted);font-size:1.06rem;margin:0;max-width:760px}
+.progress{
+  display:flex;
+  gap:8px;
+  margin-top:20px;
+}
+.progress span{
+  height:7px;
+  flex:1;
+  border-radius:999px;
+  background:var(--line);
+}
+.progress span.active{background:var(--accent)}
+section{
+  margin-top:24px;
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:rgba(18,26,47,.8);
+}
+h2{margin:0 0 12px;font-size:1.55rem}
+p{margin:10px 0;color:#e7ecfb}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:15px}
+.card{
+  padding:17px;
+  border-radius:16px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+}
+.card strong{display:block;color:#fff;margin-bottom:6px}
+.card span{color:var(--muted)}
+.quote{
+  margin-top:20px;
+  border-left:4px solid var(--accent);
+  padding:12px 16px;
+  background:rgba(124,156,255,.08);
+  border-radius:0 12px 12px 0;
+  color:#dfe7ff;
+}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:24px;
+}
+.nav a{
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:12px 15px;
+  border-radius:13px;
+  font-weight:700;
+}
+.nav a:hover{border-color:var(--accent)}
+footer{color:var(--muted);text-align:center;margin-top:22px;font-size:.9rem}
+@media(max-width:600px){
+  main{padding:18px 12px 55px}
+  .hero,section{padding:20px}
+  .nav{flex-direction:column}
+  .nav a{text-align:center}
+}
+
+.site-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:0 0 22px;
+}
+.site-nav a{
+  text-decoration:none;
+  color:var(--text);
+  border:1px solid var(--line);
+  background:var(--panel);
+  padding:10px 13px;
+  border-radius:12px;
+  font-weight:700;
+  transition:.15s ease;
+}
+.site-nav a:hover{
+  border-color:var(--accent);
+  transform:translateY(-1px);
+}
+.site-nav a.home{
+  background:var(--panel2);
+}
+
+</style>
+</head>
+<body>
+<main>
+  <nav class="site-nav" aria-label="Navegação"><a class="home" href="index.html">⌂ Início</a><a href="01_introducao_e_estrutura.html">← Anterior</a><a href="03_exemplo_gato_ou_cachorro.html">Próxima →</a></nav>
+  <header class="hero">
+    <p class="kicker">Parte 2 • Aprendizado</p>
+    <h1>O segredo: como a rede aprende?</h1>
+    <p class="subtitle">Tentativa, erro e correção matemática — repetidos muitas vezes.</p>
+    <div class="progress" aria-label="Progresso da apresentação"><span class=""></span><span class="active"></span><span class=""></span><span class=""></span></div>
+  </header>
+
+  <section><h2>O começo</h2>
+<p>No começo, a rede neural não sabe nada. Os pesos são gerados de forma aleatória e ela erra quase tudo.</p>
+</section>
+<section><h2>O ciclo de aprendizado</h2>
+<p>O aprendizado acontece em um ciclo contínuo de três etapas:</p>
+<div class="grid">
+<div class="card"><strong>1. Propagação (Forward Pass)</strong><span>A rede recebe os dados e dá um palpite sobre a resposta.</span></div>
+<div class="card"><strong>2. Função de Perda (Loss)</strong><span>Calculamos o tamanho do erro cometido pela rede.</span></div>
+<div class="card"><strong>3. Retropropagação + Gradiente Descendente</strong><span>O computador faz o caminho inverso, identificando quais partes contribuíram mais para o erro. O Gradiente Descendente ajusta os pesos para diminuir esse erro no próximo palpite.</span></div>
+</div>
+</section>
+<section><h2>Repetição</h2>
+<p>Esse ciclo se repete milhares de vezes até a rede aprender padrões e produzir respostas cada vez mais adequadas.</p>
+</section>
+<section><h2>Uma ideia simples</h2>
+<p>Pense no treinamento como um processo de tentativa, erro e correção: a rede faz um palpite, mede o quanto errou e ajusta seus pesos para tentar novamente.</p>
+</section>
+<section><h2>Dica para a apresentação</h2>
+<p>Uma analogia útil para explicar “pesos” a um público leigo é compará-los à nossa experiência de vida: damos mais peso ao conselho de um médico do que ao de um estranho na rua.</p>
+</section>
+<footer>Redes Neurais Artificiais • <a href="index.html" style="color:inherit">voltar ao início</a></footer>
+</main>
+</body>
+</html>
